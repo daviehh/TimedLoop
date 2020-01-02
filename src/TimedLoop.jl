@@ -5,7 +5,6 @@ using Printf
 
 export @tml, @tmlv
 
-
 ######## time to h:m:s
 function hms(dt)
     (h, r) = divrem(dt, 60 * 60)
@@ -15,8 +14,8 @@ end
 
 
 
+# ref: threaded for loop Threads.@threads
 # https://github.com/JuliaLang/julia/blob/46ce4d79337bdd257ee2e3d2f4bb1c55ff0a5030/base/threadingconstructs.jl
-
 
 function m_tml(iter, lbody, v_out)
     lidx = iter.args[1]         # index
@@ -51,7 +50,7 @@ function m_tml(iter, lbody, v_out)
                 @printf("%i/%i in %.3f sec.\n", i, n_loop, timing_trj)
                 @printf("ETA: %s\ntotal run est. %s, %.3f s per loop, %s to go\n", timing_eta, hms(timing_tot_est), timing_avg, hms(timing_rem))
                 println("="^7)
-            end
+            end #if
         end #for
     end #quote
 end
